@@ -22,8 +22,8 @@
 }
 
 .slider {
-    background-color: #111111;
-    border: 1px solid #333333;
+    background-color: #1a1a24;
+    border: 1px solid #2e2e3a;
     border-radius: 28px;
     bottom: 0;
     cursor: pointer;
@@ -35,7 +35,7 @@
 }
 
 .slider:before {
-    background-color: #4b5563;
+    background-color: #2e2e3a;
     border-radius: 50%;
     bottom: 2px;
     content: "";
@@ -48,42 +48,46 @@
 }
 
 input:checked + .slider {
-    background-color: #f9fafb;
+    background-color: #e5e7eb;
     border-color: #d1d5db;
 }
 
 input:checked + .slider:before {
-    background-color: #10b981;
+    background-color: #ffffff;
     transform: translateX(26px);
 }
 
 .slider-icon-sun, .slider-icon-moon {
     position: absolute;
     top: 50%;
-    transform: translateY(-50%);
-    font-size: 12px;
-    z-index: 1;
+    font-size: 11px;
+    z-index: 3;
     pointer-events: none;
-    transition: opacity 0.3s;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out, color 0.3s;
 }
 
 .slider-icon-moon {
-    right: 8px;
-    color: #6b7280;
+    left: 7px;
+    color: #a1a1aa;
+    opacity: 1;
+    transform: translateY(-50%);
 }
 
 .slider-icon-sun {
-    left: 8px;
+    left: 7px;
     opacity: 0;
-    color: #f59e0b;
+    color: #df8e1d;
+    transform: translateY(-50%) rotate(-90deg);
 }
 
 input:checked + .slider .slider-icon-moon {
     opacity: 0;
+    transform: translateY(-50%) translateX(26px) rotate(90deg);
 }
 
 input:checked + .slider .slider-icon-sun {
     opacity: 1;
+    transform: translateY(-50%) translateX(26px) rotate(0deg);
 }
 
 /* Light Mode Overrides */
@@ -150,8 +154,8 @@ body.light-mode .section-title,
 body.light-mode .content-header-flex h1, 
 body.light-mode .content-header h1,
 body.light-mode .card-value {
-    color: #111827;
-    text-shadow: none;
+    color: #111827 !important;
+    text-shadow: none !important;
 }
 
 body.light-mode .data-table th {
@@ -185,7 +189,8 @@ body.light-mode .btn-logout:hover {
     background-color: #fef2f2;
 }
 
-body.light-mode .sensor-meter-card::before {
+body.light-mode .sensor-meter-card::before,
+body.light-mode .meter-card::before {
     background: #e5e7eb;
 }
 
@@ -228,17 +233,82 @@ body.light-mode .form-group label {
     color: #374151;
 }
 
-body.light-mode input[type="time"],
-body.light-mode input[type="number"],
-body.light-mode select {
-    background-color: #f9fafb;
-    border-color: #d1d5db;
-    color: #111827;
-}
-
 body.light-mode input[type="time"]:focus,
 body.light-mode input[type="number"]:focus,
 body.light-mode select:focus {
-    border-color: #10b981;
-    background-color: #ffffff;
+    border-color: #10b981 !important;
+    background-color: #ffffff !important;
 }
+
+/* Schedules Page Input & Layout Overrides */
+body.light-mode .input-time-modern {
+    background: #ffffff !important;
+    border-color: #d1d5db !important;
+    color: #111827 !important;
+    color-scheme: light !important;
+}
+
+body.light-mode .input-time-modern:focus {
+    border-color: #10b981 !important;
+}
+
+body.light-mode .smart-backup-control {
+    background: #f9fafb !important;
+    border-color: #e5e7eb !important;
+}
+
+body.light-mode .smart-backup-control label {
+    color: #4b5563 !important;
+}
+
+body.light-mode .smart-backup-input-wrapper {
+    background: #ffffff !important;
+    border-color: #d1d5db !important;
+}
+
+body.light-mode .smart-backup-input-wrapper span {
+    color: #1f2937 !important;
+}
+
+body.light-mode .card-header-flex {
+    border-bottom-color: #e5e7eb !important;
+}
+
+body.light-mode .input-group label {
+    color: #4b5563 !important;
+}
+
+
+/* Analisis Record Items Override */
+body.light-mode .record-item strong {
+    color: #111827;
+}
+
+body.light-mode .record-grid {
+    border-top-color: #e5e7eb;
+}
+
+/* Settings Danger Zone & Modal Override */
+body.light-mode .danger-zone p {
+    color: #4b5563;
+}
+
+body.light-mode .modal-box {
+    background: #ffffff;
+    border-color: #ef4444;
+}
+
+body.light-mode .modal-text {
+    color: #4b5563;
+}
+
+body.light-mode .btn-cancel {
+    border-color: #d1d5db;
+    color: #4b5563;
+}
+
+body.light-mode .btn-cancel:hover {
+    background: #f3f4f6;
+    border-color: #9ca3af;
+}
+
