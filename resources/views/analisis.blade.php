@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="{{ asset('css/panel.css') }}">
     <link rel="stylesheet" href="{{ asset('css/analisis.css') }}">
     <link rel="stylesheet" href="{{ asset('css/mobile.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/theme.css') }}">
     @vite('resources/js/app.js')
 </head>
 
@@ -49,6 +50,15 @@
             </nav>
 
             <div class="sidebar-footer">
+                <div class="theme-switch-wrapper">
+                    <label class="theme-switch" for="theme-toggle">
+                        <input type="checkbox" id="theme-toggle" />
+                        <div class="slider round">
+                            <i class="fa-solid fa-sun slider-icon-sun"></i>
+                            <i class="fa-solid fa-moon slider-icon-moon"></i>
+                        </div>
+                    </label>
+                </div>
                 <span class="user-greeting">Halo, {{ auth()->user()->username ?? 'admin' }}</span>
                 <form action="{{ route('logout') }}" method="POST">
                     @csrf
@@ -134,5 +144,6 @@
     </div>
 
     <script src="{{ asset('js/sidebar.js') }}"></script>
+    <script src="{{ asset('js/theme.js') }}"></script>
 </body>
 </html>

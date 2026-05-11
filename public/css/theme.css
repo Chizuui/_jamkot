@@ -1,0 +1,244 @@
+/* public/css/theme.css */
+
+/* Theme Toggle Capsule Button */
+.theme-switch-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 1.5rem;
+    padding: 0 0.5rem;
+    width: 100%;
+}
+
+.theme-switch {
+    display: inline-block;
+    height: 28px;
+    position: relative;
+    width: 54px;
+}
+
+.theme-switch input {
+    display: none;
+}
+
+.slider {
+    background-color: #111111;
+    border: 1px solid #333333;
+    border-radius: 28px;
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: .3s;
+}
+
+.slider:before {
+    background-color: #4b5563;
+    border-radius: 50%;
+    bottom: 2px;
+    content: "";
+    height: 22px;
+    left: 2px;
+    position: absolute;
+    transition: .3s;
+    width: 22px;
+    z-index: 2;
+}
+
+input:checked + .slider {
+    background-color: #f9fafb;
+    border-color: #d1d5db;
+}
+
+input:checked + .slider:before {
+    background-color: #10b981;
+    transform: translateX(26px);
+}
+
+.slider-icon-sun, .slider-icon-moon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 12px;
+    z-index: 1;
+    pointer-events: none;
+    transition: opacity 0.3s;
+}
+
+.slider-icon-moon {
+    right: 8px;
+    color: #6b7280;
+}
+
+.slider-icon-sun {
+    left: 8px;
+    opacity: 0;
+    color: #f59e0b;
+}
+
+input:checked + .slider .slider-icon-moon {
+    opacity: 0;
+}
+
+input:checked + .slider .slider-icon-sun {
+    opacity: 1;
+}
+
+/* Light Mode Overrides */
+body.light-mode {
+    background-color: #f3f4f6;
+    color: #1f2937;
+}
+
+body.light-mode .panel-content,
+body.light-mode .content {
+    background-color: #f3f4f6;
+}
+
+body.light-mode .sidebar, 
+body.light-mode .navbar {
+    background-color: #ffffff;
+    border-right: 1px solid #e5e7eb;
+}
+
+body.light-mode .navbar {
+    border-right: none;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+body.light-mode .glow-card, 
+body.light-mode .setting-card, 
+body.light-mode .form-card, 
+body.light-mode .schedule-card,
+body.light-mode .analisis-card {
+    background-color: #ffffff;
+    border-color: #e5e7eb;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+body.light-mode .glow-card:hover {
+    border-color: var(--warna-utama, #10b981);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+body.light-mode .nav-link {
+    color: #4b5563;
+}
+
+body.light-mode .nav-link:hover {
+    background-color: #f3f4f6;
+    color: #111827;
+}
+
+body.light-mode .nav-link.active {
+    background-color: #10b981;
+    color: white;
+}
+
+body.light-mode .content-header-flex p, 
+body.light-mode .card-desc, 
+body.light-mode .card-title, 
+body.light-mode .text-muted, 
+body.light-mode .dashboard-footer p {
+    color: #6b7280;
+}
+
+body.light-mode .datetime-widget .time-display, 
+body.light-mode .section-title, 
+body.light-mode .content-header-flex h1, 
+body.light-mode .content-header h1,
+body.light-mode .card-value {
+    color: #111827;
+    text-shadow: none;
+}
+
+body.light-mode .data-table th {
+    color: #4b5563;
+}
+
+body.light-mode .data-table td {
+    color: #1f2937;
+    border-bottom: 1px solid #f3f4f6;
+}
+
+body.light-mode .data-table tbody tr:hover {
+    background-color: #f9fafb;
+}
+
+body.light-mode .sidebar-header h2, 
+body.light-mode .brand-text {
+    color: #111827;
+}
+
+body.light-mode .btn-logout-sidebar, 
+body.light-mode .btn-logout {
+    border-color: #e5e7eb;
+    color: #1f2937;
+}
+
+body.light-mode .btn-logout-sidebar:hover,
+body.light-mode .btn-logout:hover {
+    border-color: #ef4444;
+    color: #ef4444;
+    background-color: #fef2f2;
+}
+
+body.light-mode .sensor-meter-card::before {
+    background: #e5e7eb;
+}
+
+body.light-mode .apexcharts-tooltip {
+    background: #ffffff !important;
+    border: 1px solid #e5e7eb !important;
+    color: #111827 !important;
+}
+
+body.light-mode .apexcharts-tooltip-title {
+    background: #f9fafb !important;
+    border-bottom: 1px solid #e5e7eb !important;
+    color: #4b5563 !important;
+}
+
+body.light-mode .apexcharts-tooltip-text {
+    color: #111827 !important;
+}
+
+body.light-mode .form-label {
+    color: #374151;
+}
+
+body.light-mode .form-control {
+    background-color: #ffffff;
+    border-color: #d1d5db;
+    color: #111827;
+}
+
+body.light-mode .form-control:focus {
+    border-color: #10b981;
+    box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
+}
+
+body.light-mode .schedule-item {
+    border-bottom-color: #e5e7eb;
+}
+
+body.light-mode .form-group label {
+    color: #374151;
+}
+
+body.light-mode input[type="time"],
+body.light-mode input[type="number"],
+body.light-mode select {
+    background-color: #f9fafb;
+    border-color: #d1d5db;
+    color: #111827;
+}
+
+body.light-mode input[type="time"]:focus,
+body.light-mode input[type="number"]:focus,
+body.light-mode select:focus {
+    border-color: #10b981;
+    background-color: #ffffff;
+}

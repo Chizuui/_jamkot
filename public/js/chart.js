@@ -18,6 +18,11 @@ document.addEventListener('DOMContentLoaded', function () {
         const kelembapanSeries = chartData.map(item => item.kelembapan);
         const warnaUtama = getComputedStyle(document.documentElement).getPropertyValue('--warna-utama').trim() || '#10b981';
 
+        const isLightMode = document.body.classList.contains('light-mode');
+        const gridColor = isLightMode ? '#e5e7eb' : '#1f1f1f';
+        const labelColor = isLightMode ? '#6b7280' : '#6b7280';
+        const textColor = isLightMode ? '#111827' : '#ededed';
+
         var optionsArea = {
             series: [
                 { name: 'Kelembapan (%)', data: kelembapanSeries },
@@ -43,21 +48,21 @@ document.addEventListener('DOMContentLoaded', function () {
                     }
                 }
             },
-            theme: { mode: 'dark' },
+            theme: { mode: isLightMode ? 'light' : 'dark' },
             colors: [warnaUtama, '#ef4444'],
             dataLabels: { enabled: false },
             stroke: { curve: 'smooth', width: 2 },
             xaxis: {
                 categories: waktuLabels,
-                labels: { style: { colors: '#6b7280' } },
+                labels: { style: { colors: labelColor } },
                 axisBorder: { show: false },
                 axisTicks: { show: false }
             },
             yaxis: {
-                labels: { style: { colors: '#6b7280' } }
+                labels: { style: { colors: labelColor } }
             },
             grid: {
-                borderColor: '#1f1f1f',
+                borderColor: gridColor,
                 strokeDashArray: 4,
                 yaxis: { lines: { show: true } }
             },
@@ -95,14 +100,14 @@ document.addEventListener('DOMContentLoaded', function () {
                     startAngle: -90,
                     endAngle: 90,
                     hollow: { size: '75%' },
-                    track: { background: '#262626', strokeWidth: '100%' },
+                    track: { background: isLightMode ? '#e5e7eb' : '#262626', strokeWidth: '100%' },
                     dataLabels: {
                         name: { show: false },
                         value: {
                             offsetY: -30,
                             fontSize: '40px',
                             fontWeight: 600,
-                            color: '#ededed',
+                            color: textColor,
                             formatter: function (val) { return (Number(val).toFixed(1)) + "°C"; }
                         }
                     }
@@ -132,14 +137,14 @@ document.addEventListener('DOMContentLoaded', function () {
                     startAngle: -90,
                     endAngle: 90,
                     hollow: { size: '75%' },
-                    track: { background: '#262626', strokeWidth: '100%' },
+                    track: { background: isLightMode ? '#e5e7eb' : '#262626', strokeWidth: '100%' },
                     dataLabels: {
                         name: { show: false },
                         value: {
                             offsetY: -30,
                             fontSize: '40px',
                             fontWeight: 600,
-                            color: '#ededed',
+                            color: textColor,
                             formatter: function (val) { return (Number(val).toFixed(1)) + "%"; }
                         }
                     }
@@ -171,10 +176,10 @@ document.addEventListener('DOMContentLoaded', function () {
                     startAngle: -90,
                     endAngle: 90,
                     hollow: { size: '75%' },
-                    track: { background: '#262626', strokeWidth: '100%' },
+                    track: { background: isLightMode ? '#e5e7eb' : '#262626', strokeWidth: '100%' },
                     dataLabels: {
                         name: { show: false },
-                        value: { offsetY: -30, fontSize: '40px', fontWeight: 600, color: '#ededed', formatter: function (val) { return (Number(val).toFixed(1)) + "°C"; } }
+                        value: { offsetY: -30, fontSize: '40px', fontWeight: 600, color: textColor, formatter: function (val) { return (Number(val).toFixed(1)) + "°C"; } }
                     }
                 }
             },
@@ -202,10 +207,10 @@ document.addEventListener('DOMContentLoaded', function () {
                     startAngle: -90,
                     endAngle: 90,
                     hollow: { size: '75%' },
-                    track: { background: '#262626', strokeWidth: '100%' },
+                    track: { background: isLightMode ? '#e5e7eb' : '#262626', strokeWidth: '100%' },
                     dataLabels: {
                         name: { show: false },
-                        value: { offsetY: -30, fontSize: '40px', fontWeight: 600, color: '#ededed', formatter: function (val) { return (Number(val).toFixed(1)) + "%"; } }
+                        value: { offsetY: -30, fontSize: '40px', fontWeight: 600, color: textColor, formatter: function (val) { return (Number(val).toFixed(1)) + "%"; } }
                     }
                 }
             },
@@ -218,5 +223,20 @@ document.addEventListener('DOMContentLoaded', function () {
         };
         new ApexCharts(document.querySelector("#gauge-avg-kelembapan"), optionsAvgKelembapan).render();
     }
+
+    window.addEventListener('themeChanged', function() {
+        if (window.chartArea) {
+            const isLightMode = document.body.classList.contains('light-mode');
+            window.chartArea.updateOptions({
+                theme: { mode: isLightMode ? 'light' : 'dark' },
+                grid: { borderColor: isLightMode ? '#e5e7eb' : '#1f1f1f' }
+            });
+            // Due to limitations with RadialBar partial updates in ApexCharts, 
+            // a full reload is safer if radial charts are present to ensure they adopt the new track/textColor
+            if (document.querySelector(".meter-card")) {
+                setTimeout(() => location.reload(), 100);
+            }
+        }
+    });
 
 });

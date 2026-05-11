@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
     <link rel="stylesheet" href="{{ asset('css/panel.css') }}">
     <link rel="stylesheet" href="{{ asset('css/mobile.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/theme.css') }}">
     @vite('resources/js/app.js')
 </head>
 
@@ -48,6 +49,15 @@
             </nav>
 
             <div class="sidebar-footer">
+                <div class="theme-switch-wrapper">
+                    <label class="theme-switch" for="theme-toggle">
+                        <input type="checkbox" id="theme-toggle" />
+                        <div class="slider round">
+                            <i class="fa-solid fa-sun slider-icon-sun"></i>
+                            <i class="fa-solid fa-moon slider-icon-moon"></i>
+                        </div>
+                    </label>
+                </div>
                 <span class="user-greeting">Halo, {{ auth()->user()->username ?? 'admin' }}</span>
                 <form action="{{ route('logout') }}" method="POST">
                     @csrf
@@ -161,6 +171,7 @@
     <script src="{{ asset('js/chart.js') }}?v={{ time() }}"></script>
     <script src="{{ asset('js/sidebar.js') }}?v={{ time() }}"></script>
     <script src="{{ asset('js/realtime.js') }}?v={{ time() }}"></script>
+    <script src="{{ asset('js/theme.js') }}"></script>
 
 </body>
 

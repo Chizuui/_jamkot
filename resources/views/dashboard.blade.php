@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
     <link rel="stylesheet" href="{{ asset('css/mobile.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/theme.css') }}">
     @vite('resources/js/app.js')
 </head>
 
@@ -19,6 +20,15 @@
         </div>
 
         <div class="nav-user">
+            <div class="theme-switch-wrapper" style="margin-bottom: 0; margin-right: 1rem; width: auto;">
+                <label class="theme-switch" for="theme-toggle">
+                    <input type="checkbox" id="theme-toggle" />
+                    <div class="slider round">
+                        <i class="fa-solid fa-sun slider-icon-sun"></i>
+                        <i class="fa-solid fa-moon slider-icon-moon"></i>
+                    </div>
+                </label>
+            </div>
             <span class="user-greeting">Halo, <strong>{{ Auth::user()->username }}</strong></span>
 
             <form action="{{ route('logout') }}" method="POST" style="display: inline;">
@@ -50,6 +60,7 @@
         <p>&copy; 2026 JAMKOT System. Developed by Kelompok 4 TKK (B) 2025</p>
     </footer>
 
+    <script src="{{ asset('js/theme.js') }}"></script>
 </body>
 
 </html>
