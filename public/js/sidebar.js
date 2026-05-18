@@ -2,21 +2,11 @@
 
 document.addEventListener('DOMContentLoaded', () => {
     // --- SIDEBAR TOGGLE LOGIC ---
-    const sidebar = document.getElementById('sidebar');
+    const sidebar = document.querySelector('.sidebar');
     const sidebarToggle = document.getElementById('sidebar-toggle');
     const sidebarOverlay = document.getElementById('sidebar-overlay');
 
-    if (sidebarToggle && sidebar) {
-        sidebarToggle.addEventListener('click', () => {
-            sidebar.classList.toggle('show');
-        });
-    }
-
-    if (sidebarOverlay && sidebar) {
-        sidebarOverlay.addEventListener('click', () => {
-            sidebar.classList.remove('show');
-        });
-    }
+    // Toggle is now handled inline in app.blade.php to avoid conflicts
 
     // --- SEAMLESS PAGE TRANSITION LOGIC ---
     const panelContent = document.querySelector('.panel-content');
@@ -77,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Close sidebar on mobile
                 if (sidebar) {
-                    sidebar.classList.remove('show');
+                    sidebar.classList.remove('active');
                 }
 
                 // Show the blurred overlay loader and fade out the current page content
