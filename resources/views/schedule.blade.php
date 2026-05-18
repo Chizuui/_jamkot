@@ -168,6 +168,14 @@
                     <i class="fa-solid fa-gauge"></i>
                     <span>Panel Utama</span>
                 </a>
+                <a href="{{ route('sensor.dht22') }}" class="nav-link {{ Route::is('sensor.dht22') ? 'active' : '' }}">
+                    <i class="fa-solid fa-temperature-half"></i>
+                    <span>Sensor DHT22</span>
+                </a>
+                <a href="{{ route('sensor.ldr') }}" class="nav-link {{ Route::is('sensor.ldr') ? 'active' : '' }}">
+                    <i class="fa-solid fa-sun"></i>
+                    <span>Sensor LDR</span>
+                </a>
                 @endif
                 @if(auth()->user()->canAccess('analisis'))
                 <a href="{{ route('analisis') }}" class="nav-link {{ Route::is('analisis') ? 'active' : '' }}">

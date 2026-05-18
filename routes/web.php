@@ -57,6 +57,12 @@ Route::middleware('auth')->group(function () {
     Route::post('/settings/reset', [SettingsController::class, 'resetData'])->middleware('permission:settings')->name('settings.reset');
     Route::get('/view3d', [PanelController::class, 'view3d'])->middleware('permission:view3d')->name('view3d');
 
+    // Sensor Details
+    Route::get('/sensor/dht22', [\App\Http\Controllers\SensorController::class, 'dht22'])->middleware('permission:panel')->name('sensor.dht22');
+    Route::get('/sensor/ldr', [\App\Http\Controllers\SensorController::class, 'ldr'])->middleware('permission:panel')->name('sensor.ldr');
+    Route::get('/api/sensor/dht22', [\App\Http\Controllers\SensorController::class, 'apiDht22'])->middleware('permission:panel')->name('api.sensor.dht22');
+    Route::get('/api/sensor/ldr', [\App\Http\Controllers\SensorController::class, 'apiLdr'])->middleware('permission:panel')->name('api.sensor.ldr');
+
 
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });
